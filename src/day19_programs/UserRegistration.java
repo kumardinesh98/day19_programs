@@ -10,22 +10,31 @@ public class UserRegistration {
 	
 	public static void main(String[] args) {
 		UserRegistration userRegistration = new UserRegistration();
+		userRegistration.password();
 		userRegistration.mobileNum();
 		Scanner scanner = new Scanner(System.in);
-		String validName ="^[A-Z]+[a-z]{3,}";
-		Pattern compiledName = Pattern.compile(validName);
-		System.out.println("enter the name");
-		String firstName = scanner.nextLine();
-		userRegistration.check(compiledName, firstName);
-		System.out.println("enter last name");
-		String secondName = scanner.nextLine();
-		userRegistration.check(compiledName, secondName);
+		userRegistration.check();
+		userRegistration.check();
 		userRegistration.email();
+	}
+	
+	public void password() {
+		System.out.println("enter password");
+		String password = scanner.nextLine();
+		String validPassword = "[a-z A-Z]{8}";
+		Pattern compiledPassword = Pattern.compile(validPassword);
+		Matcher pinmatcher = compiledPassword.matcher(password);
+		if (pinmatcher.matches()) {
+			System.out.println(password + " is fine");
+		} else {
+			System.out.println(password + " not valid");
+		}
+		
 	}
 	public void email() {
 		System.out.println("enter email id");
 		String emailId = scanner.nextLine();
-		String validEmail = "^abc+.[a-z]*[@bl.co]+[.a-z]+";
+		String validEmail = "^abc+.[a-z]*[@bl.co]+[.a-z]*";
 		Pattern compiledName = Pattern.compile(validEmail);
 		Matcher pinmatcher = compiledName.matcher(emailId);
 		if (pinmatcher.matches()) {
@@ -48,8 +57,11 @@ public class UserRegistration {
 		}
 	}
 	
-	public void check(Pattern con, String name) {
-		Matcher pinmatcher = con.matcher(name);
+	public void check() {
+		String name = "hhh";
+		String validName ="^[A-Z]+[a-z]{3,}";
+		Pattern compiledName = Pattern.compile(validName);
+		Matcher pinmatcher = compiledName.matcher(name);
 		if (pinmatcher.matches()) {
 			System.out.println(name + " is fine");
 		} else {
