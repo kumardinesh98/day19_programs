@@ -10,6 +10,7 @@ public class UserRegistration {
 	
 	public static void main(String[] args) {
 		UserRegistration userRegistration = new UserRegistration();
+		userRegistration.mobileNum();
 		Scanner scanner = new Scanner(System.in);
 		String validName ="^[A-Z]+[a-z]{3,}";
 		Pattern compiledName = Pattern.compile(validName);
@@ -31,6 +32,19 @@ public class UserRegistration {
 			System.out.println(emailId + " is fine");
 		} else {
 			System.out.println(emailId + " not valid");
+		}
+	}
+	
+	public void mobileNum() {
+		System.out.println("enter mobile number");
+		String mobileNumber = scanner.nextLine();
+		String validNumber = "[91]+\s[0-9]{10}";
+		Pattern compiledName = Pattern.compile(validNumber);
+		Matcher pinmatcher = compiledName.matcher(mobileNumber);
+		if (pinmatcher.matches()) {
+			System.out.println(mobileNumber + " is fine");
+		} else {
+			System.out.println(mobileNumber + " not valid");
 		}
 	}
 	
