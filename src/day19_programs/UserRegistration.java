@@ -10,12 +10,18 @@ public class UserRegistration {
 	
 	public static void main(String[] args) {
 		UserRegistration userRegistration = new UserRegistration();
-		userRegistration.password();
-		userRegistration.mobileNum();
 		Scanner scanner = new Scanner(System.in);
-		userRegistration.check();
-		userRegistration.check();
+		System.out.println("enter rthe first name");
+		String firstName= scanner.nextLine();
+		userRegistration.check(firstName);
+		
+		System.out.println("enter the second name");
+		String secondName = scanner.nextLine();
+		userRegistration.check(secondName);
 		userRegistration.email();
+		userRegistration.mobileNum();
+		userRegistration.password();
+		
 	}
 	
 	public void password() {
@@ -56,8 +62,7 @@ public class UserRegistration {
 		}
 	}
 	
-	public void check() {
-		String name = "hhh";
+	public void check(String name) {
 		String validName ="^[A-Z]+[a-z]{3,}";
 		Pattern compiledName = Pattern.compile(validName);
 		Matcher pinmatcher = compiledName.matcher(name);
